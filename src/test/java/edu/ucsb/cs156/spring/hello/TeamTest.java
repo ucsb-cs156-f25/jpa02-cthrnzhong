@@ -31,10 +31,14 @@ public class TeamTest {
     public void equals_returns_correct_value(){
         assertEquals(true, team.equals(team));
         assertEquals(false, team.equals("test"));
-        Team t = new Team("tester");
-        assertEquals(false, team.equals(t));
-        t.setName("test-team");
+        Team t = new Team("test-team");
         assertEquals(true, team.equals(t));
+        t.setName("tester");
+        assertEquals(false, team.equals(t));
+        Team t2 = new Team("test-team");
+        t2.addMember("bob");
+        assertEquals(false, team.equals(t2));
+
     }
 
     @Test 
