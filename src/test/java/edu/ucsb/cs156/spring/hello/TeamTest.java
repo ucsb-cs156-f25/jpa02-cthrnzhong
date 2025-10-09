@@ -26,4 +26,24 @@ public class TeamTest {
     public void toString_returns_correct_string(){
         assertEquals("Team(name=test-team, members=[])", team.toString());
     }
+
+    @Test
+    public void equals_returns_correct_value(){
+        assertEquals(true, team.equals(team));
+        assertEquals(false, team.equals("test"));
+        Team t = new Team("tester");
+        assertEquals(false, team.equals(t));
+        t.setName("test-team");
+        assertEquals(true, team.equals(t));
+    }
+
+    @Test 
+    public void hashCode_returns_correct_value(){
+        Team t1 = new Team();
+        Team t2 = new Team();
+
+        int result = t1.hashCode();
+        int expectedResult = 1;
+        assertEquals(expectedResult, result);
+    }
 }
